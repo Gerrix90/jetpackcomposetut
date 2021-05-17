@@ -13,18 +13,19 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.learn.composetest.service.DataUtil
 import com.learn.composetest.ui.theme.ComposeTestTheme
 
 class DetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var item = intent.getStringExtra("student")
+        var item = intent.getIntExtra("student", -1)
         setContent {
             ComposeTestTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    if (item != null) {
-                        DisplayItem(item)
+                    if (item >-1) {
+                        DisplayItem(DataUtil.items[item])
                     }
                 }
             }
@@ -48,3 +49,6 @@ fun DisplayItem(name: String) {
     }
 
 }
+
+
+
